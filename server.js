@@ -23,6 +23,10 @@ const users = [
 }
 ];
 
+app.get('/', (req, res) => {
+    res.send("Hello there! This the backend of my JWT Login form :)")
+})
+
 app.post('/', async (req, res) => {
     const user = users.find(user => user.email === req.body.email)
     if(!user) {
