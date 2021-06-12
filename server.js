@@ -7,6 +7,7 @@ const mysql = require('mysql')
 const cors = require('cors')
 const db = require('./db')
 const bodyParser = require('body-parser')
+const PORT = process.env.PORT || 5000;
 
 app.use(cors())
 app.use(express.json())
@@ -124,6 +125,6 @@ app.post('/api/deleteUser', (req, res) => {
     })
 })
 
-app.listen(5000, () => {
-    console.log('listening on port 5000');
+app.listen(PORT, () => {
+    console.log('listening on port ' + PORT);
 });
