@@ -53,7 +53,8 @@ app.post('/', async (req, res) => {
         })
        }
     } catch {
-        res.status(500).json({
+        //res.status(500)
+        res.json({
             success: 0,
             message: 'Invalid Credentials'
         });
@@ -110,7 +111,7 @@ app.get('/api/userDetails', authenticateToken, (req, res) => {
     })
 })
 
-app.post('/api/deleteUser', (req, res) => {
+app.post('/api/deleteUser', authenticateToken, (req, res) => {
     const { id } = req.body;
     let sql = 'DELETE FROM user_details WHERE user_id=?';
     db.query(sql, [id], (err, result) => {
