@@ -58,10 +58,10 @@ app.post("/", async (req, res) => {
       });
     }
   } catch (err) {
-    //res.status(500)
     res.status(500).json({
       success: 0,
-      message: err,
+      errMessage: err,
+      message: "Server Error",
     });
   }
 });
