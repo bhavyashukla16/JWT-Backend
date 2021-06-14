@@ -38,7 +38,7 @@ app.post('/', async (req, res) => {
     }
     try {
        if( req.body.password === user.password){
-           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 60});
+           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 300});
            //req.session.user = user;
            res.json({ 
                 success: 1,
@@ -56,7 +56,7 @@ app.post('/', async (req, res) => {
         //res.status(500)
         res.status(500).json({
             success: 0,
-            message: err
+            message: "hi"
         });
     }
 })
