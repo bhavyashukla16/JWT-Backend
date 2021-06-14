@@ -38,7 +38,7 @@ app.post('/', async (req, res) => {
     }
     try {
        if( req.body.password === user.password){
-           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 300});
+           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 60});
            //req.session.user = user;
            res.json({ 
                 success: 1,
@@ -52,11 +52,11 @@ app.post('/', async (req, res) => {
             message: 'Invalid Password'
         })
        }
-    } catch {
+    } catch(err) {
         //res.status(500)
-        res.json({
+        res.status(500).json({
             success: 0,
-            message: 'Invalid Credentials'
+            message: err
         });
     }
 })
