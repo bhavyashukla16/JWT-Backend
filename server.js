@@ -27,7 +27,7 @@ const users = [
 app.get("/", (req, res) => {
   res.send(
     "Hello there! This the backend of my JWT Login form :) & Database Hosted at " +
-      process.env.DB_HOST
+      'localhost' || process.env.DB_HOST
   );
 });
 
